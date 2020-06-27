@@ -3,7 +3,7 @@ package net.adventure.battle;
 import java.util.Random;
 
 import net.adventure.characters.Character;
-
+import net.adventure.characters.enemies.*;
 import net.adventure.characters.player.Player;
 
 public class Battle {
@@ -14,11 +14,11 @@ public class Battle {
 	
 	private String userInput;
 	
-	public Battle(Character player, Character enemy, String userInput) {
+	public Battle(Character player, String userInput) {
 		
 		this.player = player;
 		
-		this.enemy = enemy;
+		this.enemy = spawnEnemy();
 		
 		this.userInput = userInput;
 	}
@@ -63,6 +63,16 @@ public class Battle {
 			enemy.heal();
 			return enemy.getName() + " chose to heal";
 		}
+	}
+	
+	public Enemy spawnEnemy() {
+		Random r = new Random();
+		Enemy[] enemies = {new Skeleton("Skeleton", 60, 5, 1, 10), new Goblin("Goblin", 80, 9, 2, 5), new Zombie("Zombie", 60, 7, 1, 7), new MageGoblin("Mage Goblin", 90, 12, 3, 3), new TrollKing("Troll King", 95, 15, 3, 1)};
+		int[] enemySpawnChance = {0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 4};
+		
+		int enemyToSpawn = enemySpawnChance[r.nextInt(enemySpawnChance.length + 1)];
+		
+		return enemies[enemyToSpawn];
 	}
 	
 	public void displayUI() {
