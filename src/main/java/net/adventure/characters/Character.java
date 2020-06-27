@@ -16,7 +16,7 @@ public abstract class Character implements Combatable{
 	
 	private boolean block = false;
 	
-	public Character(String name, int health, int attackStat, int staminaStat, int potionCount) {
+	public Character(String name, int health, int attackStat, int potionCount) {
 		
 		this.name = name;
 		
@@ -83,6 +83,10 @@ public abstract class Character implements Combatable{
 		health += 15;
 		
 		return "Used potion";
+	}
+	
+	public void addPotion() {
+		potionCount++;
 	}
 	
 	public String toString() {
