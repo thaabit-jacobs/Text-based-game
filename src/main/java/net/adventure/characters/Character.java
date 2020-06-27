@@ -10,8 +10,6 @@ public abstract class Character implements Combatable{
 	
 	private int attackStat;
 	
-	private int staminaStat;
-	
 	private int potionCount;
 	
 	private boolean block = false;
@@ -23,8 +21,6 @@ public abstract class Character implements Combatable{
 		this.health = health;
 		
 		this.attackStat = attackStat;
-		
-		this.staminaStat = staminaStat;
 		
 		this.potionCount = potionCount;
 		
@@ -40,10 +36,6 @@ public abstract class Character implements Combatable{
 	
 	public int getAttackStat() {
 		return attackStat;
-	}
-	
-	public int getStamina() {
-		return staminaStat;
 	}
 	
 	public int getPotionCount() {
@@ -80,7 +72,10 @@ public abstract class Character implements Combatable{
 			return "Out of potions";
 		
 		setPotion();
-		health += 15;
+		health += 30;
+		if(health > 100) {
+			health -= health%100;
+		}
 		
 		return "Used potion";
 	}

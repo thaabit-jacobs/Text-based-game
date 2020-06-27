@@ -3,9 +3,8 @@ package net.adventure.characters.player;
 import java.util.Random;
 
 import net.adventure.characters.Character;
-import net.adventure.characters.behaviour.Escapable;
 
-public class Player extends Character implements Escapable{
+public class Player extends Character{
 	
 	public Player(String name, int health, int attackStat, int potionCount) {
 		super(name, health, attackStat, potionCount);
@@ -20,17 +19,6 @@ public class Player extends Character implements Escapable{
 		
 		enemy.setHealth((int)(this.calculateAttackDamage()));
 		return this.getName() + " inflicted " + (int)(this.calculateAttackDamage()) + " damage";
-	}
-	
-	public boolean run() {
-		Random r = new Random();
-		
-		if(r.nextInt(2) == 0) {
-			System.out.println("Unable to ran away...");
-			return false;
-		}
-		
-		return true;
 	}
 	
 }
